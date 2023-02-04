@@ -30,16 +30,18 @@ sudo sysctl --system
 [ -d bin ] && rm -rf bin
 wget https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-linux-amd64.tar.gz 
 tar xvf containerd-1.6.15-linux-amd64.tar.gz
-sudo mv bin/* /usr/bin/
+sudo mv bin/* /usr/local/bin/
 
 # install daemon
-wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service -O /usr/local/lib/systemd/system/containerd.service
-systemctl daemon-reload
-systemctl enable --now containerd
+wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+sudo mkdir -p /usr/local/lib/systemd/system/
+sudo cp containerd.service /usr/local/lib/systemd/system/containerd.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now containerd
 
 # runc
 wget https://github.com/opencontainers/runc/releases/download/v1.1.4/runc.amd64
-install -m 755 runc.amd64 /usr/local/sbin/runc
+sudo install -m 755 runc.amd64 /usr/local/sbin/runc
 
 # Configure containerd
 sudo mkdir -p /etc/containerd
