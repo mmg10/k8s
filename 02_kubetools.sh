@@ -6,6 +6,7 @@ sudo apt update && sudo apt upgrade -y
 
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 br_netfilter
+overlay
 EOF
 
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
