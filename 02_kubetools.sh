@@ -31,3 +31,7 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 #kubeadm config images list
 #kubeadm config images pull
+
+wget https://github.com/derailed/k9s/releases/download/v0.27.2/k9s_Linux_amd64.tar.gz
+tar -xzf k9s_Linux_amd64.tar.gz
+sudo cp k9s /usr/local/bin
